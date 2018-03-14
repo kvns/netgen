@@ -678,6 +678,12 @@ namespace nglib
    }
 
 
+   DLL_HEADER Ng_Result Ng_STL_SaveBinarySTL (Ng_STL_Geometry * geom, char* filename)
+   {
+	   STLGeometry* stlgeometry = (STLGeometry*)geom;
+	   stlgeometry->SaveBinary(filename, "Exported from nglib");
+	   return NG_OK;
+   }
 
 
    // generates mesh, empty mesh be already created.
@@ -796,7 +802,16 @@ namespace nglib
    }
 
 
+   // Loads geometry from STEP File
+   DLL_HEADER Ng_OCC_Geometry * Ng_OCC_Load_Shape (TopoDS_Shape& shape)
+   {
+      // Call the STEP File Load function. Note.. the geometry class 
+      // is created and instantiated within the load function
+      OCCGeometry * occgeo = LoadOCC_Shape(shape);
 
+      return ((Ng_OCC_Geometry *)occgeo);
+   }
+   
    
    // Loads geometry from STEP File
    DLL_HEADER Ng_OCC_Geometry * Ng_OCC_Load_STEP (const char * filename)

@@ -1290,7 +1290,21 @@ void STEP_GetEntityName(const TopoDS_Shape & theShape, STEPCAFControl_Reader * a
       return occgeo;
    }
 
+   
+   OCCGeometry * LoadOCC_Shape (TopoDS_Shape& shape)
+   {
+      OCCGeometry * occgeo;
+      occgeo = new OCCGeometry;
+     
+      occgeo->shape = shape;      
+      occgeo->changed = 1;
+      occgeo->BuildFMap();
 
+      occgeo->CalcBoundingBox();
+      PrintContents (occgeo);      
+
+      return occgeo;
+   }
 
 
    OCCGeometry *LoadOCC_BREP (const char *filename)

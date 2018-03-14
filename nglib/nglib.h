@@ -626,7 +626,8 @@ DLL_HEADER Ng_Result Ng_STL_GenerateSurfaceMesh (Ng_STL_Geometry * geom,
                                                  Ng_Mesh * mesh,
                                                  Ng_Meshing_Parameters * mp);
 
-
+// save stl mesh												 
+DLL_HEADER Ng_Result Ng_STL_SaveBinarySTL (Ng_STL_Geometry * geom, char* filename);
 #ifdef ACIS
 
 // **********************************************************
@@ -660,6 +661,9 @@ DLL_HEADER Ng_OCC_Geometry * Ng_OCC_NewGeometry ();
 
 // Delete an OCC Geometry Object
 DLL_HEADER Ng_Result Ng_OCC_DeleteGeometry (Ng_OCC_Geometry * geom);
+
+// Loads geometry from existing shape
+DLL_HEADER Ng_OCC_Geometry * Ng_OCC_Load_Shape (TopoDS_Shape& shape);
 
 // Loads geometry from STEP file
 DLL_HEADER Ng_OCC_Geometry * Ng_OCC_Load_STEP (const char * filename);

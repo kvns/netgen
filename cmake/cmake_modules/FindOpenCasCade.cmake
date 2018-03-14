@@ -8,7 +8,9 @@
 
 if(WIN32)
     find_path(OCC_INCLUDE_DIR Standard_Version.hxx PATH_SUFFIXES inc ../inc)
-    find_library(OCC_LIBRARY TKernel)
+    find_library(OCC_LIBRARY 
+		NAMES TKernel 
+		HINTS "${OCC_LIBRARY_DIR}")
 else(WIN32)
     find_path(OCC_INCLUDE_DIR Standard_Version.hxx
       /usr/include/opencascade
@@ -81,7 +83,9 @@ set(OCC_LIBRARY_NAMES
 )
 
 foreach( libname ${OCC_LIBRARY_NAMES} )
-    find_library( ${libname} ${libname} ${OCC_LIBRARY_DIR} )
+    find_library( ${libname} 
+		NAMES ${libname} 
+		HINTS "${OCC_LIBRARY_DIR}" )
     set(OCC_LIBRARIES ${OCC_LIBRARIES} ${${libname}})
 endforeach()
 

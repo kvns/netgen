@@ -433,6 +433,7 @@ namespace netgen
    DLL_HEADER OCCGeometry * LoadOCC_IGES (const char * filename);
    DLL_HEADER OCCGeometry * LoadOCC_STEP (const char * filename);
    DLL_HEADER OCCGeometry * LoadOCC_BREP (const char * filename);
+   DLL_HEADER OCCGeometry * LoadOCC_Shape (TopoDS_Shape& shape);
 
    DLL_HEADER extern OCCParameters occparam;
 
