@@ -803,11 +803,11 @@ namespace nglib
 
 
    // Loads geometry from STEP File
-   DLL_HEADER Ng_OCC_Geometry * Ng_OCC_Load_Shape (TopoDS_Shape& shape)
+   DLL_HEADER Ng_OCC_Geometry * Ng_UseOCCGeometry(Ng_OCC_Shape shape)
    {
       // Call the STEP File Load function. Note.. the geometry class 
       // is created and instantiated within the load function
-      OCCGeometry * occgeo = LoadOCC_Shape(shape);
+      OCCGeometry * occgeo = LoadOCC_Shape( (TopoDS_Shape*) shape);
 
       return ((Ng_OCC_Geometry *)occgeo);
    }

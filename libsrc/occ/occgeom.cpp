@@ -1291,12 +1291,14 @@ void STEP_GetEntityName(const TopoDS_Shape & theShape, STEPCAFControl_Reader * a
    }
 
    
-   OCCGeometry * LoadOCC_Shape (TopoDS_Shape& shape)
+   OCCGeometry * LoadOCC_Shape (TopoDS_Shape* shape)
    {
       OCCGeometry * occgeo;
       occgeo = new OCCGeometry;
      
-      occgeo->shape = shape;      
+      occgeo->shape = *shape;      
+      occgeo->face_colours = Handle_XCAFDoc_ColorTool();
+      occgeo->face_colours.Nullify();
       occgeo->changed = 1;
       occgeo->BuildFMap();
 
